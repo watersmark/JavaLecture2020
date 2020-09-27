@@ -1,35 +1,30 @@
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import jdk.swing.interop.SwingInterOpUtils;
+
+import java.io.*;
 
 public class InputOutput {
     public static void main(String[] args) throws IOException {
-        FileInputStream file = null;
 
-        try {
-            int i;
-            // Открываем файл
-            file = new FileInputStream("TestLecture1.txt");
-            do {
-                i = file.read();
-                System.out.print((char) i);
-                //System.out.print(" ");
-            } while (i != -1);
+        FileInputStream file = new FileInputStream("TestLecture.txt");
 
-        }
-        catch (IOException e){
-            System.out.println("Io exception");
-        }
-        finally {
-            // Пытаемся закрыть файл
-            try {
-                file.close();
+        int digit;
+
+        do{
+            digit = file.read();
+
+            System.out.print((char) digit);
+            System.out.print("");
+
+            if((char) digit == '\n'){
+                System.out.print("$");
             }
-            catch (NullPointerException w){
-                System.out.println("Error close file");
+            if((char) digit == ' '){
+                System.out.print("#");
             }
-        }
+
+        }while (digit != -1);
+
+        file.close();
 
     }
 }

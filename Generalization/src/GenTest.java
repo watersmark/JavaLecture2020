@@ -16,8 +16,25 @@ class GenT<T extends  Number> {
         }
     }
 
-    public boolean eq(GenT<?> obj){
+    public boolean eq(GenT<? extends Number> obj){
         return  this.sum_av == obj.sum_av;
+    }
+}
+
+interface Runcer<T extends Comparable<T>>{
+
+}
+
+class Wrapper<T extends Number>{
+
+    public <V extends Comparable<T>> T age(T age,V name){
+        System.out.println(name);
+        return  age;
+    }
+
+
+    public Wrapper<?> ages(Wrapper<? extends  Number> ff){
+        return ff;
     }
 }
 
@@ -25,17 +42,9 @@ class GenT<T extends  Number> {
 public class GenTest {
     public static void main(String[] args) {
 
-        GenT<Integer> first = new GenT<Integer>(new Integer[]{2, 3, 4});
-        GenT<Double> second = new GenT<Double>(new Double[] {1.2, 1.3, 1.22});
-        GenT<Double> third = new GenT<Double>(new Double[] {2.0, 3.0, 4.0});
-
-        first.sum();
-        second.sum();
-        third.sum();
-
-        System.out.println(first.eq(second));
-        System.out.println(first.eq(third));
-        System.out.println();
+        int a = 32;
+        double b = (double) a;
+        System.out.println(b);
 
     }
 }

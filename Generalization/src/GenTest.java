@@ -1,16 +1,19 @@
-class TestGen<T extends Integer, V extends Integer>{
-    private T temp1;
-    private V temp2;
+class GenT<T extends Number> {
+    T[] nums;
 
 
-    public void init(T first, V second){
-        this.temp1 = first;
-        this.temp2 = second;
+    GenT(T[] mass){
+        this.nums = mass;
     }
 
-    public int sum(){
 
-        return (int)temp1 + (int) temp2;
+    public int sum(){
+        int  sum = 0;
+
+        for(T i : nums){
+            sum += Integer.parseInt(String.valueOf(i));
+        }
+        return sum;
     }
 
 }
@@ -19,8 +22,8 @@ class TestGen<T extends Integer, V extends Integer>{
 public class GenTest {
     public static void main(String[] args) {
 
-
-
+        GenT<Integer> first = new GenT<Integer>(new Integer[]{2, 3, 4});
+        System.out.println( first.sum());
 
     }
 }

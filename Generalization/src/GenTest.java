@@ -1,5 +1,7 @@
-class GenT<T extends Number> {
+class GenT<T extends  Number> {
     T[] nums;
+
+    public double sum_av = 0;
 
 
     GenT(T[] mass){
@@ -7,15 +9,16 @@ class GenT<T extends Number> {
     }
 
 
-    public int sum(){
-        int  sum = 0;
+    public void sum(){
 
         for(T i : nums){
-            sum += Integer.parseInt(String.valueOf(i));
+            this.sum_av += i.doubleValue();
         }
-        return sum;
     }
 
+    public boolean eq(GenT<?> obj){
+        return  this.sum_av == obj.sum_av;
+    }
 }
 
 
@@ -23,7 +26,16 @@ public class GenTest {
     public static void main(String[] args) {
 
         GenT<Integer> first = new GenT<Integer>(new Integer[]{2, 3, 4});
-        System.out.println( first.sum());
+        GenT<Double> second = new GenT<Double>(new Double[] {1.2, 1.3, 1.22});
+        GenT<Double> third = new GenT<Double>(new Double[] {2.0, 3.0, 4.0});
+
+        first.sum();
+        second.sum();
+        third.sum();
+
+        System.out.println(first.eq(second));
+        System.out.println(first.eq(third));
+        System.out.println();
 
     }
 }
